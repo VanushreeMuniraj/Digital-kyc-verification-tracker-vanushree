@@ -1,0 +1,19 @@
+{
+  "suppressions": [
+    {
+      "type": "CWE-117",
+      "file": "DataInitializer.java",
+      "justification": "Startup logging only - not user-controlled input"
+    },
+    {
+      "type": "CWE-117",
+      "file": "SampleDataService.java",
+      "justification": "Sample data initialization - development environment"
+    },
+    {
+      "type": "CWE-117",
+      "file": "AuthorizationInterceptor.java",
+      "justification": "Authorization debug logging - controlled output"
+    }
+  ]
+}

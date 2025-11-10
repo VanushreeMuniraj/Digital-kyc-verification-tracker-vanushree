@@ -1,0 +1,28 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30" packages="to.talk.common" status="WARN">
+    <Appenders>
+        <Kinesis name="LogKinesisAppender" />
+        <Kinesis name="MetricKinesisAppender" />
+        <RollingFile name="LogRollingFileAppender" fileName="/logs/${sys:user.name}/${sys:user.name}.log" filePattern="/logs/${sys:user.name}/${sys:user.name}-%i.log">
+            <PatternLayout pattern="%d %r [%t] %-5p [%c{1.}] %X - %m %throwable%n" />
+            <SizeBasedTriggeringPolicy size="100 MB" />
+            <DefaultRolloverStrategy max="2" />
+        </RollingFile>
+        <RollingFile name="MetricRollingFileAppender" fileName="/logs/${sys:user.name}/${sys:user.name}-metric.log" filePattern="/logs/${sys:user.name}/${sys:user.name}-metric-%i.log">
+            <PatternLayout Pattern="%d %r [%t] %-5p [%c] %X - %m %throwable%n" />
+            <SizeBasedTriggeringPolicy size="100 MB" />
+            <DefaultRolloverStrategy max="2" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="metric.olympus.metrics.collectors.LogStreamCollector" level="INFO" additivity="false">
+            <AppenderRef ref="MetricRollingFileAppender" />
+            <AppenderRef ref="MetricKinesisAppender" />
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="LogKinesisAppender" />
+            <AppenderRef ref="LogRollingFileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

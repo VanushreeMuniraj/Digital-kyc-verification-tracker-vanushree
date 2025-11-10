@@ -1,0 +1,995 @@
+openapi: 3.0.3
+info:
+  title: Digital KYC API
+  description: Digital KYC Document Verification System
+  version: 1.0.0
+  contact:
+    name: KYC Team
+    email: support@kyc.com
+
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Local development server
+
+security:
+  - BearerAuth: []
+
+paths:
+  # Authentication Endpoints
+  /auth/login:
+    post:
+      tags: [Authentication]
+      summary: User login
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password]
+              properties:
+                username:
+                  type: string
+                  example: "requestor1"
+                password:
+                  type: string
+                  example: "requestor123"
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  type:
+                    type: string
+                    example: "Bearer"
+                  id:
+                    type: integer
+                    example: 1
+                  username:
+                    type: string
+                    example: "requestor1"
+                  email:
+                    type: string
+                    example: "requestor1@kyc.com"
+                  role:
+                    type: string
+                    example: "ROLE_REQUESTOR"
+                  message:
+                    type: string
+                    example: "Login successful"
+
+  /auth/register:
+    post:
+      tags: [Authentication]
+      summary: Register new user
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password, email, fullName, role]
+              properties:
+                username:
+                  type: string
+                  example: "newuser"
+                password:
+                  type: string
+                  example: "password123"
+                email:
+                  type: string
+                  example: "newuser@kyc.com"
+                fullName:
+                  type: string
+                  example: "New User"
+                role:
+                  type: string
+                  enum: [CUSTOMER, OFFICER, REQUESTOR, ADMIN]
+                  example: "CUSTOMER"
+      responses:
+        200:
+          description: Registration successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User registered successfully"
+
+  # Requestor Endpoints (No Auth Required)
+  /verifications:
+    post:
+      tags: [Requestor]
+      summary: Create verification request
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [customerId, requestReason, priority]
+              properties:
+                customerId:
+                  type: integer
+                  example: 1
+                requestReason:
+                  type: string
+                  example: "Account opening verification"
+                description:
+                  type: string
+                  example: "New customer KYC verification required"
+                priority:
+                  type: string
+                  enum: [LOW, MEDIUM, HIGH]
+                  example: "MEDIUM"
+                priorityLevel:
+                  type: integer
+                  example: 2
+      responses:
+        200:
+          description: Verification request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+
+    get:
+      tags: [Requestor]
+      summary: Get all verifications
+      security: []
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [PENDING, IN_REVIEW, APPROVED, REJECTED, SENT_BACK_FOR_DETAILS]
+          example: "PENDING"
+      responses:
+        200:
+          description: List of verifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VerificationResponse'
+
+  /verifications/{verificationId}:
+    get:
+      tags: [Verification]
+      summary: Get verification by ID
+      parameters:
+        - name: verificationId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        200:
+          description: Verification details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+
+  /verifications/{verificationId}/status:
+    put:
+      tags: [Officer]
+      summary: Update verification status
+      parameters:
+        - name: verificationId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [APPROVED, REJECTED, SENT_BACK_FOR_DETAILS]
+                  example: "APPROVED"
+                comments:
+                  type: string
+                  example: "All documents verified successfully"
+                reason:
+                  type: string
+                  example: "Complete documentation provided"
+      responses:
+        200:
+          description: Status updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+
+  /verifications/{verificationId}/assign:
+    put:
+      tags: [Officer]
+      summary: Assign verification to current officer
+      parameters:
+        - name: verificationId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        200:
+          description: Verification assigned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+
+  # Customer Endpoints
+  /customers/{customerId}/verify:
+    post:
+      tags: [Requestor]
+      summary: Create verification for specific customer
+      security: []
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [requestReason, priority]
+              properties:
+                requestReason:
+                  type: string
+                  example: "Account opening verification"
+                description:
+                  type: string
+                  example: "New customer KYC verification required"
+                priority:
+                  type: string
+                  enum: [LOW, MEDIUM, HIGH]
+                  example: "MEDIUM"
+                priorityLevel:
+                  type: integer
+                  example: 2
+      responses:
+        200:
+          description: Verification request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+
+  /customers/{customerId}:
+    get:
+      tags: [Customer]
+      summary: Get customer profile
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        200:
+          description: Customer profile
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customerId:
+                    type: integer
+                    example: 1
+                  fullName:
+                    type: string
+                    example: "John Doe"
+                  email:
+                    type: string
+                    example: "customer1@kyc.com"
+                  phoneNumber:
+                    type: string
+                    example: "+1234567890"
+                  address:
+                    type: string
+                    example: "123 Main St, City, State"
+                  dateOfBirth:
+                    type: string
+                    example: "1990-01-01"
+                  panNumber:
+                    type: string
+                    example: "ABCDE1234F"
+                  aadhaarNumber:
+                    type: string
+                    example: "123456789012"
+                  accountType:
+                    type: string
+                    example: "INDIVIDUAL"
+                  accountStatus:
+                    type: string
+                    example: "ACTIVE"
+                  kycStatus:
+                    type: string
+                    example: "PENDING"
+                  documentsUploaded:
+                    type: integer
+                    example: 2
+                  lastUpdated:
+                    type: string
+                    format: date-time
+                    example: "2024-10-24T10:30:00"
+
+  /customers/{customerId}/verifications:
+    get:
+      tags: [Customer]
+      summary: Get customer verifications
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        200:
+          description: Customer verifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VerificationResponse'
+
+  # Document Management
+  /documents/upload:
+    post:
+      tags: [Documents]
+      summary: Upload document
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [verificationId, file, documentType]
+              properties:
+                verificationId:
+                  type: integer
+                  example: 1
+                file:
+                  type: string
+                  format: binary
+                documentType:
+                  type: string
+                  enum: [PASSPORT, NATIONAL_ID, DRIVING_LICENSE, UTILITY_BILL, BANK_STATEMENT, TAX_DOCUMENT]
+                  example: "PASSPORT"
+      responses:
+        200:
+          description: Document uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+
+  /documents/verification/{verificationId}:
+    get:
+      tags: [Documents]
+      summary: Get documents for verification
+      parameters:
+        - name: verificationId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        200:
+          description: Documents list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentResponse'
+
+  /documents/{documentId}/status:
+    put:
+      tags: [Documents]
+      summary: Update document status
+      parameters:
+        - name: documentId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [VERIFIED, REJECTED]
+                  example: "VERIFIED"
+                reason:
+                  type: string
+                  example: "Document is clear and valid"
+      responses:
+        200:
+          description: Document status updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  document:
+                    $ref: '#/components/schemas/DocumentResponse'
+                  message:
+                    type: string
+                    example: "Document status updated to VERIFIED"
+
+  # Admin Endpoints
+  /admin/users:
+    get:
+      tags: [Admin]
+      summary: Get all users
+      responses:
+        200:
+          description: Users list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserResponse'
+                  totalUsers:
+                    type: integer
+                    example: 10
+                  message:
+                    type: string
+                    example: "Users retrieved successfully"
+
+  /admin/users/{userId}/role:
+    put:
+      tags: [Admin]
+      summary: Update user role
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [role]
+              properties:
+                role:
+                  type: string
+                  enum: [CUSTOMER, OFFICER, REQUESTOR, ADMIN]
+                  example: "OFFICER"
+      responses:
+        200:
+          description: Role updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/UserResponse'
+                  message:
+                    type: string
+                    example: "User role updated to OFFICER"
+
+  # Officer Endpoints
+  /verifications/open:
+    get:
+      tags: [Officer]
+      summary: Get open verifications
+      responses:
+        200:
+          description: Open verifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    customerId:
+                      type: integer
+                      example: 1
+                    customerName:
+                      type: string
+                      example: "John Doe"
+                    priority:
+                      type: string
+                      example: "HIGH"
+                    submittedAt:
+                      type: string
+                      format: date-time
+                      example: "2024-10-24T09:00:00"
+                    status:
+                      type: string
+                      example: "PENDING"
+
+  /verifications/assigned:
+    get:
+      tags: [Officer]
+      summary: Get assigned verifications
+      responses:
+        200:
+          description: Assigned verifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    customerId:
+                      type: integer
+                      example: 1
+                    customerName:
+                      type: string
+                      example: "John Doe"
+                    status:
+                      type: string
+                      example: "IN_REVIEW"
+                    assignedAt:
+                      type: string
+                      format: date-time
+                      example: "2024-10-24T09:00:00"
+
+  # Public Endpoints
+  /public/health:
+    get:
+      tags: [Public]
+      summary: Health check
+      security: []
+      responses:
+        200:
+          description: System health
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "UP"
+                  database:
+                    type: string
+                    example: "CONNECTED"
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: "2024-10-24T10:30:00"
+                  version:
+                    type: string
+                    example: "1.0.0"
+
+  /public/document-types:
+    get:
+      tags: [Public]
+      summary: Get supported document types
+      security: []
+      responses:
+        200:
+          description: Document types
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  documentTypes:
+                    type: array
+                    items:
+                      type: string
+                    example: ["PASSPORT", "NATIONAL_ID", "DRIVING_LICENSE", "UTILITY_BILL", "BANK_STATEMENT", "TAX_DOCUMENT"]
+                  message:
+                    type: string
+                    example: "Supported document types retrieved successfully"
+
+  # RBAC OTP Endpoints
+  /rbac-otp/generate:
+    post:
+      tags: [RBAC OTP]
+      summary: Generate RBAC OTP
+      description: Generate OTP with role-based validation and throttling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [userId, purpose, role]
+              properties:
+                userId:
+                  type: string
+                  example: "1"
+                purpose:
+                  type: string
+                  enum: [LOGIN, DOCUMENT_UPLOAD, VERIFICATION_APPROVAL, ACCOUNT_RESET]
+                  example: "LOGIN"
+                role:
+                  type: string
+                  enum: [CUSTOMER, OFFICER, ADMIN, REQUESTOR]
+                  example: "CUSTOMER"
+                context:
+                  type: string
+                  example: "login_attempt"
+      responses:
+        200:
+          description: OTP generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "OTP generated successfully"
+                  otpCode:
+                    type: string
+                    example: "123456"
+                  purpose:
+                    type: string
+                    example: "LOGIN"
+                  role:
+                    type: string
+                    example: "CUSTOMER"
+                  expiresIn:
+                    type: string
+                    example: "5 minutes"
+        400:
+          description: Invalid request or throttled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Purpose LOGIN not allowed for role ADMIN"
+
+  /rbac-otp/verify:
+    post:
+      tags: [RBAC OTP]
+      summary: Verify RBAC OTP
+      description: Verify OTP with context-aware validation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [userId, otpCode, purpose, role]
+              properties:
+                userId:
+                  type: string
+                  example: "1"
+                otpCode:
+                  type: string
+                  example: "123456"
+                purpose:
+                  type: string
+                  enum: [LOGIN, DOCUMENT_UPLOAD, VERIFICATION_APPROVAL, ACCOUNT_RESET]
+                  example: "LOGIN"
+                role:
+                  type: string
+                  enum: [CUSTOMER, OFFICER, ADMIN, REQUESTOR]
+                  example: "CUSTOMER"
+                context:
+                  type: string
+                  example: "login_attempt"
+      responses:
+        200:
+          description: OTP verification result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "OTP verified successfully"
+                  purpose:
+                    type: string
+                    example: "LOGIN"
+                  role:
+                    type: string
+                    example: "CUSTOMER"
+                  requiresDualFactor:
+                    type: boolean
+                    example: false
+
+  /rbac-otp/dual-factor:
+    post:
+      tags: [RBAC OTP]
+      summary: Generate dual-factor OTP
+      description: Generate dual-factor OTP for sensitive operations
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [officerUserId, adminUserId, operation]
+              properties:
+                officerUserId:
+                  type: string
+                  example: "2"
+                adminUserId:
+                  type: string
+                  example: "3"
+                operation:
+                  type: string
+                  example: "account_reset"
+      responses:
+        200:
+          description: Dual-factor OTPs generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Dual-factor OTPs generated"
+                  officerOtp:
+                    type: string
+                    example: "123456"
+                  adminOtp:
+                    type: string
+                    example: "87654321"
+                  operation:
+                    type: string
+                    example: "account_reset"
+                  expiresIn:
+                    type: string
+                    example: "15 minutes"
+
+  # Test Endpoints
+  /test/auth-status:
+    get:
+      tags: [Test]
+      summary: Check authentication status
+      security: []
+      responses:
+        200:
+          description: Auth status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authenticated:
+                    type: boolean
+                    example: true
+                  username:
+                    type: string
+                    example: "requestor1"
+                  authorities:
+                    type: array
+                    items:
+                      type: string
+                    example: ["ROLE_REQUESTOR"]
+                  userId:
+                    type: integer
+                    example: 1
+
+  /test/protected:
+    get:
+      tags: [Test]
+      summary: Test protected endpoint
+      responses:
+        200:
+          description: Access granted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Access granted"
+                  user:
+                    type: string
+                    example: "requestor1"
+                  role:
+                    type: array
+                    items:
+                      type: string
+                    example: ["ROLE_REQUESTOR"]
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    VerificationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        customerId:
+          type: integer
+          example: 1
+        status:
+          type: string
+          enum: [PENDING, IN_REVIEW, APPROVED, REJECTED, SENT_BACK_FOR_DETAILS]
+          example: "PENDING"
+        requestReason:
+          type: string
+          example: "Account opening verification"
+        description:
+          type: string
+          example: "New customer KYC verification required"
+        priority:
+          type: string
+          enum: [LOW, MEDIUM, HIGH]
+          example: "MEDIUM"
+        priorityLevel:
+          type: integer
+          example: 2
+        createdAt:
+          type: string
+          format: date-time
+          example: "2024-10-24T10:30:00"
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2024-10-24T10:30:00"
+        assignedTo:
+          type: integer
+          nullable: true
+          example: null
+        comments:
+          type: string
+          nullable: true
+          example: null
+
+    DocumentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        verificationId:
+          type: integer
+          example: 1
+        fileName:
+          type: string
+          example: "passport.pdf"
+        documentType:
+          type: string
+          enum: [PASSPORT, NATIONAL_ID, DRIVING_LICENSE, UTILITY_BILL, BANK_STATEMENT, TAX_DOCUMENT]
+          example: "PASSPORT"
+        status:
+          type: string
+          enum: [UPLOADED, VERIFIED, REJECTED]
+          example: "UPLOADED"
+        uploadedAt:
+          type: string
+          format: date-time
+          example: "2024-10-24T10:30:00"
+        verifiedAt:
+          type: string
+          format: date-time
+          nullable: true
+          example: null
+
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: "admin"
+        email:
+          type: string
+          example: "admin@kyc.com"
+        fullName:
+          type: string
+          example: "System Administrator"
+        role:
+          type: string
+          enum: [CUSTOMER, OFFICER, REQUESTOR, ADMIN]
+          example: "ADMIN"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2024-10-24T10:30:00"
+
+    ErrorResponse:
+      type: object
+      properties:
+        path:
+          type: string
+          example: "/api/v1/endpoint"
+        error:
+          type: string
+          example: "Unauthorized"
+        message:
+          type: string
+          example: "Full authentication is required to access this resource"
+        status:
+          type: integer
+          example: 401
+        timestamp:
+          type: string
+          format: date-time
+          example: "2024-10-24T10:30:00"
+
+# Test Users
+x-test-users:
+  admin:
+    username: "admin"
+    password: "admin123"
+    role: "ADMIN"
+  officer:
+    username: "officer1"
+    password: "officer123"
+    role: "OFFICER"
+  requestor:
+    username: "requestor1"
+    password: "requestor123"
+    role: "REQUESTOR"
+  customer:
+    username: "customer1"
+    password: "customer123"
+    role: "CUSTOMER"

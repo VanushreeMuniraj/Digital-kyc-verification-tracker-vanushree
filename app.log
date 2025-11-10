@@ -1,0 +1,208 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/Users/vanushreed/homebrew/Cellar/maven/3.9.11/libexec/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< in.zeta:zea-opc-b03-digital-kyc-vanushree >--------------
+[INFO] Building zea-opc-b03-digital-kyc-vanushree 0.0.3-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.9:run (default-cli) > test-compile @ zea-opc-b03-digital-kyc-vanushree >>>
+Downloading from zeta-snapshots: https://artifactory.internal.ciaas.zetaapps.in/artifactory/zeta-libs-snapshot/com/googlecode/libphonenumber/libphonenumber/maven-metadata.xml
+[WARNING] Could not transfer metadata com.googlecode.libphonenumber:libphonenumber/maven-metadata.xml from/to zeta-snapshots (https://artifactory.internal.ciaas.zetaapps.in/artifactory/zeta-libs-snapshot): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[WARNING] 1 problem was encountered while building the effective model for org.javassist:javassist:jar:3.18.2-GA during dependency collection step for project (use -X to see details)
+[WARNING] 1 problem was encountered while building the effective model for org.javassist:javassist:jar:3.20.0-GA during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- enforcer:3.0.0:enforce (enforce-no-snapshots) @ zea-opc-b03-digital-kyc-vanushree ---
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ zea-opc-b03-digital-kyc-vanushree ---
+[INFO] argLine set to -javaagent:/Users/vanushreed/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree/target/jacoco.exec
+[INFO] 
+[INFO] --- git-changelog-maven-plugin:1.92:git-changelog (GenerateGitChangelogIgnoreCommitsOlderThan) @ zea-opc-b03-digital-kyc-vanushree ---
+[INFO] Extended variables:
+[INFO] #
+[INFO] # Wrote: /Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree/CHANGELOG.md
+[INFO] #
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ zea-opc-b03-digital-kyc-vanushree ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree/src/main/db
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ zea-opc-b03-digital-kyc-vanushree ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.2.0:testResources (default-testResources) @ zea-opc-b03-digital-kyc-vanushree ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ zea-opc-b03-digital-kyc-vanushree ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< spring-boot:3.2.9:run (default-cli) < test-compile @ zea-opc-b03-digital-kyc-vanushree <<<
+[INFO] 
+[WARNING] com.googlecode.libphonenumber:libphonenumber/maven-metadata.xml failed to transfer from https://artifactory.internal.ciaas.zetaapps.in/artifactory/zeta-libs-snapshot during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of zeta-snapshots has elapsed or updates are forced. Original error: Could not transfer metadata com.googlecode.libphonenumber:libphonenumber/maven-metadata.xml from/to zeta-snapshots (https://artifactory.internal.ciaas.zetaapps.in/artifactory/zeta-libs-snapshot): (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+[INFO] 
+[INFO] --- spring-boot:3.2.9:run (default-cli) @ zea-opc-b03-digital-kyc-vanushree ---
+[INFO] Attaching agents: []
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.lmax.disruptor.RingBufferFields (file:/Users/vanushreed/.m2/repository/com/lmax/disruptor/3.4.2/disruptor-3.4.2.jar)
+WARNING: Please consider reporting this to the maintainers of class com.lmax.disruptor.RingBufferFields
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+2025-10-31T09:26:19.147987Z main WARN Could not find log4Olympus2.xml file in search directories: [null, null, /Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree, /Users/vanushreed]
+2025-10-31T09:26:19.149259Z main INFO Using environment based static log config for dev
+2025-10-31T09:26:19.157329Z main WARN Initializing dynamic log4Olympus config with inputs => directoryPath [ /app/dynamicL4O2Config ], pollInterval [ 10000 ], loggerPrefix [ log4olympus ], rootLoggerName [ root ]
+[DynamicLogConfigHandler] => Skipping init of setup for processing dynamic log level config due to missing directory at path [ /app/dynamicL4O2Config ]. Provision the directory at the specified path and restart your application to fix it.
+2025-10-31T09:26:19.159289Z main WARN Failed to process dynamic log level config due to no directory at path [ /app/dynamicL4O2Config ]
+14:56:20.210 [main] INFO  org.springframework.cloud.commons.util.InetUtils - Cannot determine local hostname
+2025-10-31 14:56:20,210 6578 [main] INFO  [o.s.c.c.u.InetUtils] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Cannot determine local hostname 
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.9)
+
+14:56:20.268 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-10-31 14:56:20,268 6636 [background-preinit] INFO  [o.h.v.i.u.Version] {} - HV000001: Hibernate Validator 8.0.1.Final 
+14:56:20.284 [main] INFO  in.zeta.zea_opc_b03_digital_kyc.ZeaOpcB03DigitalKycApplication - Starting ZeaOpcB03DigitalKycApplication using Java 24.0.1 with PID 86848 (/Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree/target/classes started by vanushreed in /Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree)
+2025-10-31 14:56:20,284 6652 [main] INFO  [i.z.z.ZeaOpcB03DigitalKycApplication] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Starting ZeaOpcB03DigitalKycApplication using Java 24.0.1 with PID 86848 (/Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree/target/classes started by vanushreed in /Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree) 
+14:56:20.284 [main] DEBUG in.zeta.zea_opc_b03_digital_kyc.ZeaOpcB03DigitalKycApplication - Running with Spring Boot v3.2.9, Spring v6.1.12
+2025-10-31 14:56:20,284 6652 [main] DEBUG [i.z.z.ZeaOpcB03DigitalKycApplication] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Running with Spring Boot v3.2.9, Spring v6.1.12 
+14:56:20.284 [main] INFO  in.zeta.zea_opc_b03_digital_kyc.ZeaOpcB03DigitalKycApplication - The following 1 profile is active: "local"
+2025-10-31 14:56:20,284 6652 [main] INFO  [i.z.z.ZeaOpcB03DigitalKycApplication] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - The following 1 profile is active: "local" 
+14:56:20.717 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-31 14:56:20,717 7085 [main] INFO  [o.s.d.r.c.RepositoryConfigurationDelegate] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+14:56:20.839 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 118 ms. Found 12 JPA repository interfaces.
+2025-10-31 14:56:20,839 7207 [main] INFO  [o.s.d.r.c.RepositoryConfigurationDelegate] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Finished Spring Data repository scanning in 118 ms. Found 12 JPA repository interfaces. 
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (file:/Users/vanushreed/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.28/tomcat-embed-core-10.1.28.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+14:56:21.447 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-31 14:56:21,447 7815 [main] INFO  [o.s.b.w.e.t.TomcatWebServer] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Tomcat initialized with port 8080 (http) 
+Oct 31, 2025 2:56:21 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-nio-8080"]
+Oct 31, 2025 2:56:21 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Oct 31, 2025 2:56:21 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/10.1.28]
+Oct 31, 2025 2:56:21 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring embedded WebApplicationContext
+14:56:21.478 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1177 ms
+2025-10-31 14:56:21,478 7846 [main] INFO  [o.s.b.w.s.c.ServletWebServerApplicationContext] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Root WebApplicationContext: initialization completed in 1177 ms 
+14:56:21.595 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-31 14:56:21,595 7963 [main] INFO  [o.h.j.i.u.LogHelper] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - HHH000204: Processing PersistenceUnitInfo [name: default] 
+14:56:21.625 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.10.Final
+2025-10-31 14:56:21,625 7993 [main] INFO  [o.h.Version] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - HHH000412: Hibernate ORM core version 6.4.10.Final 
+14:56:21.641 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-31 14:56:21,641 8009 [main] INFO  [o.h.c.i.RegionFactoryInitiator] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - HHH000026: Second-level cache disabled 
+14:56:21.693 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-31 14:56:21,693 8061 [main] INFO  [c.z.h.HikariDataSource] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - HikariPool-1 - Starting... 
+14:56:21.727 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4552e288
+2025-10-31 14:56:21,727 8095 [main] INFO  [c.z.h.p.HikariPool] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4552e288 
+14:56:21.727 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-31 14:56:21,727 8095 [main] INFO  [c.z.h.HikariDataSource] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - HikariPool-1 - Start completed. 
+14:56:21.744 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-31 14:56:21,744 8112 [main] WARN  [o.h.o.deprecation] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+14:56:21.825 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-31 14:56:21,825 8193 [main] INFO  [o.s.o.j.p.SpringPersistenceUnitInfo] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - No LoadTimeWeaver setup: ignoring JPA class transformer 
+14:56:22.332 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-31 14:56:22,332 8700 [main] INFO  [o.h.e.t.j.p.i.JtaPlatformInitiator] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+14:56:22.417 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-31 14:56:22,417 8785 [main] INFO  [o.s.o.j.LocalContainerEntityManagerFactoryBean] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+14:56:22.567 [main] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-31 14:56:22,567 8935 [main] INFO  [o.s.d.j.r.q.QueryEnhancerFactory] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Hibernate is in classpath; If applicable, HQL parser will be used. 
+Error registering webhook: (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+14:56:23.107 [main] INFO  olympus.metrics.MetricLogger - Using STRING format for metric logs
+2025-10-31 14:56:23,107 9475 [main] INFO  [o.m.MetricLogger] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Using STRING format for metric logs 
+2025-10-31T09:26:23.108018Z main WARN Could not find log4Olympus2.xml file in search directories: [null, null, /Users/vanushreed/Desktop/zea-opc-b03-digital-kyc-vanushree, /Users/vanushreed]
+14:56:23.666 [main] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-31 14:56:23,666 10034 [main] INFO  [o.s.b.a.e.w.EndpointLinksResolver] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Exposing 1 endpoint(s) beneath base path '/actuator' 
+Oct 31, 2025 2:56:23 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-8080"]
+14:56:23.704 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-10-31 14:56:23,704 10072 [main] INFO  [o.s.b.w.e.t.TomcatWebServer] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Tomcat started on port 8080 (http) with context path '' 
+14:56:23.712 [main] INFO  in.zeta.zea_opc_b03_digital_kyc.ZeaOpcB03DigitalKycApplication - Started ZeaOpcB03DigitalKycApplication in 4.588 seconds (process running for 10.107)
+2025-10-31 14:56:23,712 10080 [main] INFO  [i.z.z.ZeaOpcB03DigitalKycApplication] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, node=unknown-node, pod=dev, service=unknown-service} - Started ZeaOpcB03DigitalKycApplication in 4.588 seconds (process running for 10.107) 
+Hibernate: 
+    select
+        count(*) 
+    from
+        users u1_0
+Oct 31, 2025 2:56:33 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:56:33.361 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-31 14:56:33,361 19729 [http-nio-8080-exec-1] INFO  [o.s.w.s.DispatcherServlet] {} - Initializing Servlet 'dispatcherServlet' 
+14:56:33.361 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-10-31 14:56:33,361 19729 [http-nio-8080-exec-1] INFO  [o.s.w.s.DispatcherServlet] {} - Completed initialization in 0 ms 
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    insert 
+    into
+        users
+        (created_at, email, full_name, is_active, password, role, updated_at, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+Error publishing event: (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+=== EVENT PUBLISHED (FALLBACK) ===
+Type: user.registered
+Data: {
+  "timestamp": 1761902793492,
+  "role": "CUSTOMER",
+  "userId": 10,
+  "email": "test@example.com",
+  "username": "testuser"
+}
+================================
+14:56:33.805 [ForkJoinPool.commonPool-worker-1] INFO  in.zeta.zea_opc_b03_digital_kyc.producer.EventProducer - {"flowId":"b0cd892b-f7f3-44bf-980f-95d88c07188d","id":"1","type":"Info","time":{"sec":1761902793,"micros":798972},"title":"Event published successfully","level":"INFO","attributes":{"eventType":"user.registered"}}
+2025-10-31 14:56:33,805 20173 [ForkJoinPool.commonPool-worker-1] INFO  [i.z.z.p.EventProducer] {appResourceId=vanushreed@dev, clusterName=default, container=unknown-container, deployment=unknown-deployment, flowID=b0cd892b-f7f3-44bf-980f-95d88c07188d, node=unknown-node, pod=dev, service=unknown-service} - {"flowId":"b0cd892b-f7f3-44bf-980f-95d88c07188d","id":"1","type":"Info","time":{"sec":1761902793,"micros":798972},"title":"Event published successfully","level":"INFO","attributes":{"eventType":"user.registered"}} 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:49 min
+[INFO] Finished at: 2025-10-31T14:57:59+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.9:run (default-cli) on project zea-opc-b03-digital-kyc-vanushree: Process terminated with exit code: 137 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
