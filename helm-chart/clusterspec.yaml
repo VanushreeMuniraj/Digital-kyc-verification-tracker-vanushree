@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ClusterSpec
+metadata:
+  name: zea-opc-b03-digital-kyc-vanushree
+  namespace: default
+
+spec:
+  atropos:
+    atroposTopics:
+      digital-kyc-vanushree-topic:
+        syncPriority: "-20"
+        name: _system_0_digital-kyc-vanushree
+        retentionPeriodInDays: 1
+
+    atroposSubscriptions:
+      digital-kyc-vanushree-subscription:
+        syncPriority: "-18"
+        subscriptionType: webhook
+        subscriptionID: subscription_0_digital-kyc-vanushree
+        subscriber: zea-opc-b03-digital-kyc-vanushree
+        topic: _system_0_digital-kyc-vanushree
+        event: "*"
+        transformerJS: |-
+          function transform(payload, sender) {  
+              return JSON.stringify(payload.data);
+          }
+        webhookRequest: |-
+          {
+            "method": "POST",
+            "url": "http://zea-opc-b03-digital-kyc-vanushree.{{ .Release.Namespace }}.svc.cluster.local:8080/api/v1/atropos/webhook",
+            "postData": {
+              "mimeType": "application/json",
+              "text": "<% print(generateRequestBody(payload.data)); %>"
+            }
+          }

@@ -1,0 +1,93 @@
+nameOverride: zea-opc-b03-digital-kyc-vanushree
+fullnameOverride: zea-opc-b03-digital-kyc-vanushree
+
+replicaCount: 1
+
+hpa:
+  enabled: false
+
+disablePropertiesConfigMap: true
+
+image:
+  repository: 813361731051.dkr.ecr.ap-south-1.amazonaws.com
+  repositoryPath: zea-opc-b03-digital-kyc-vanushree
+  pullPolicy: Always
+  tag: 0.0.1-SNAPSHOT
+
+envs:
+  - name: environmentName
+    value: staging
+
+envProperties:
+  javaXms: 128M
+  javaXmx: 512M
+  APP_NAME: zea-opc-b03-digital-kyc-vanushree
+  KINESIS_ACCESSKEY: vault:secrets/data/zone/common/logging#KINESIS_ACCESSKEY
+  KINESIS_SECRETKEY: vault:secrets/data/zone/common/logging#KINESIS_SECRETKEY
+  KINESIS_REGION: vault:secrets/data/zone/common/logging#KINESIS_REGION
+  ATROPOS_PUBLISH_MODE: KINESIS
+  ATROPOS_TOPIC_NAME: _system_0_digital-kyc-vanushree
+  PUBLISHER_SERVICE_BASE_URL: https://publisher-service-appinfra.internal.mum1-pp.zetaapps.in/
+  ATROPOS_SUBSCRIPTION_URL: https://atropos-controller-appinfra.internal.mum1-pp.zetaapps.in/api/v1/unauth/tenants/0/registerWebhookSubscription
+
+clusterName: zea-opc-b03-digital-kyc-vanushree
+service:
+  targetPort: 8080
+  healthCheckPath: /actuator/health
+  livenessProbeInitialDelaySeconds: 60
+  readinessProbeInitialDelaySeconds: 60
+  livenessTimeoutSeconds: 10
+  readinessTimeoutSeconds: 10
+
+additionalPodAnnotations:
+  configmap.reloader.stakater.com/reload: "zea-opc-b03-digital-kyc-vanushree-env-configmap"
+  health.check.enable: "true"
+  health.check.module: http_2xx
+  health.check.path: "/actuator/health"
+
+httpHealthCheckServiceMonitor:
+  enabled: false
+
+serviceMonitor:
+  enabled: true
+  monitors:
+    - name: prometheus
+      labels:
+        prometheus: zone-monitoring
+      path: /_metrics
+      port: http
+      scrapeTimeout: 10s
+      interval: 30s
+      matchLabels:
+        app.kubernetes.io/name: zea-opc-b03-digital-kyc-vanushree
+        app: zea-opc-b03-digital-kyc-vanushree
+    - name: micrometer
+      labels:
+        prometheus: zone-monitoring
+      path: /actuator/prometheus
+      port: http
+      scrapeTimeout: 10s
+      interval: 60s
+      matchLabels:
+        app.kubernetes.io/name: zea-opc-b03-digital-kyc-vanushree
+        app: zea-opc-b03-digital-kyc-vanushree
+
+resources:
+  limits:
+    memory: 2Gi
+  requests:
+    cpu: 1
+    memory: 1Gi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+serviceAccountName: zea-opc-b03-digital-kyc-vanushree
+
+olympusLabels:
+  olympusCluster: cluster
+  olympusClusterBU: bu
+  olympusClusterTeam: team-name
+  olympusZone: zone-name
+  olympusZoneEnv: zone-env
