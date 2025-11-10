@@ -1,0 +1,1714 @@
+{
+  "info": {
+    "name": "KYC-Vanushree-NoAuth",
+    "description": "Complete Digital KYC API Collection - No Authentication Required",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080/api/v1"
+    }
+  ],
+  "item": [
+    {
+      "name": "\ud83d\udd10 Authentication",
+      "item": [
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\",\n  \"email\": \"admin@kyc.com\",\n  \"name\": \"System Administrator\",\n  \"phone\": \"+1234567890\",\n  \"role\": \"ADMIN\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Register Officer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"officer1\",\n  \"password\": \"officer123\",\n  \"email\": \"officer1@kyc.com\",\n  \"name\": \"KYC Officer 1\",\n  \"phone\": \"+1234567891\",\n  \"role\": \"OFFICER\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Register Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"customer1\",\n  \"password\": \"customer123\",\n  \"email\": \"customer1@kyc.com\",\n  \"name\": \"John Doe\",\n  \"phone\": \"+1234567892\",\n  \"role\": \"CUSTOMER\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Register Requestor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"requestor1\",\n  \"password\": \"requestor123\",\n  \"email\": \"requestor1@kyc.com\",\n  \"name\": \"KYC Requestor\",\n  \"phone\": \"+1234567893\",\n  \"role\": \"REQUESTOR\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login Officer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"officer1\",\n  \"password\": \"officer123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"customer1\",\n  \"password\": \"customer123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login Requestor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"requestor1\",\n  \"password\": \"requestor123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udc64 Admin Endpoints",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "users"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get User Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/users/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "users",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Role to User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"2\",\n  \"role\": \"OFFICER\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/roles",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "roles"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update User Role",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"OFFICER\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/users/2/role",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "users",
+                "2",
+                "role"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deactivate User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/users/2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "users",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/customers/2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "customers",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Bulk Approve Verifications",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verificationIds\": [1, 2, 3],\n  \"action\": \"APPROVED\",\n  \"comments\": \"Bulk approval completed\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/verifications/bulk-approve",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "verifications",
+                "bulk-approve"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete User Role",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/roles/2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "roles",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Roles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/roles",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "roles"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get System Statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/system/stats",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "admin",
+                "system",
+                "stats"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udc6e Officer Endpoints",
+      "item": [
+        {
+          "name": "Get Open Verifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/verifications/open",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verifications",
+                "open"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Assigned Verifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/verifications/assigned",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verifications",
+                "assigned"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Pending Verifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/verifications/pending",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verifications",
+                "pending"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Assign Verification to Self",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/verification/1/assign",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verification",
+                "1",
+                "assign"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Review Verification",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"APPROVED\",\n  \"comments\": \"All documents verified successfully\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/verification/1/review",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verification",
+                "1",
+                "review"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Verification Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/verifications/1/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verifications",
+                "1",
+                "status"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Verification Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/officer/verification/1/details",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "officer",
+                "verification",
+                "1",
+                "details"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Verification Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/verifications/1/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verifications",
+                "1",
+                "status"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/dashboard/stats",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "dashboard",
+                "stats"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Comments to Verification",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Please provide additional documents\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/customers/1/verification/1/comments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1",
+                "verification",
+                "1",
+                "comments"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udc65 Customer Endpoints",
+      "item": [
+        {
+          "name": "Get Customer Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Customer Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Updated\",\n  \"phone\": \"+9876543210\",\n  \"address\": \"New Address\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/customers/2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Customer Verifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customers/2/verifications",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1",
+                "verifications"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Verification Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customers/1/verification/1/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1",
+                "verification",
+                "1",
+                "status"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Verification Timeline",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/verifications/2/timeline",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verifications",
+                "2",
+                "timeline"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Verification Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestReason\": \"Initial KYC verification\",\n  \"description\": \"Customer needs KYC verification\",\n  \"priority\": \"HIGH\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/customers/1/verify",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1",
+                "verify"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udccb Requestor Endpoints",
+      "item": [
+        {
+          "name": "Create Verification Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1,\n  \"requestReason\": \"Initial KYC verification\",\n  \"description\": \"Customer needs KYC\",\n  \"priority\": \"HIGH\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/verifications",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "verifications"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udcc4 Document Management",
+      "item": [
+        {
+          "name": "1. Upload Document (DO THIS FIRST)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select a PDF file"
+                },
+                {
+                  "key": "documentType",
+                  "value": "AADHAAR",
+                  "type": "text"
+                },
+                {
+                  "key": "verificationId",
+                  "value": "1",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/documents/upload",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "upload"
+              ]
+            },
+            "description": "Upload a document first. Copy the 'id' from response to use in view/download"
+          }
+        },
+        {
+          "name": "List All Documents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents"
+              ]
+            },
+            "description": "See all uploaded documents and their IDs"
+          }
+        },
+        {
+          "name": "Get Documents by Verification",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/verification/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "verification",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Document by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Document Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"VERIFIED\",\n  \"reason\": \"Document is valid and authentic\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/documents/1/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "1",
+                "status"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Documents by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/status/PENDING",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "status",
+                "PENDING"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Document Preview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/1/preview",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "1",
+                "preview"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Document Versions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/1/versions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "1",
+                "versions"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Upload New Document Version",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                },
+                {
+                  "key": "comments",
+                  "value": "Updated document with corrections",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/documents/1/new-version",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "1",
+                "new-version"
+              ]
+            }
+          }
+        },
+        {
+          "name": "View Document (PDF) - Step 2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/1/view",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "1",
+                "view"
+              ]
+            },
+            "description": "First upload a document, then use the returned document ID here"
+          }
+        },
+        {
+          "name": "Download Document - Step 2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/1/download",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "1",
+                "download"
+              ]
+            },
+            "description": "First upload a document, then use the returned document ID here"
+          }
+        },
+        {
+          "name": "Delete Document",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/documents/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "documents",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udcac Comments",
+      "item": [
+        {
+          "name": "Add Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Document needs clarification\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/comments/verification/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                "verification",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/comments/verification/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                "verification",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Comment by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/comments/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Comment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Updated comment text\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/comments/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Comment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/comments/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "comments",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udcca Dashboard & Monitoring",
+      "item": [
+        {
+          "name": "Get System Load Statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/dashboard/system-load",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "dashboard",
+                "system-load"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Priority-Based Requests",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/dashboard/priority-requests",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "dashboard",
+                "priority-requests"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Officer Workload",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/dashboard/officer-workload/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "dashboard",
+                "officer-workload",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Real-Time Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/dashboard/real-time-stats",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "dashboard",
+                "real-time-stats"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Audit Statistics (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/dashboard/audit-statistics",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "dashboard",
+                "audit-statistics"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udcdd Audit & Tracking",
+      "item": [
+        {
+          "name": "Get Audit Logs by Verification (Officer)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/audit/verification/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "audit",
+                "verification",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Audit Logs by Verification (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/audit/verification/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "audit",
+                "verification",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Audit Summary (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/audit/verification/1/summary",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "audit",
+                "verification",
+                "1",
+                "summary"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Request Audit Trail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/request-audit/request/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "request-audit",
+                "request",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Officer Audit Trail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/request-audit/officer/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "request-audit",
+                "officer",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Status History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/status-history/verification/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "status-history",
+                "verification",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udd14 Notifications & User Details",
+      "item": [
+        {
+          "name": "Get User Notifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/notifications/user/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notifications",
+                "user",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get User Verification Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/notifications/user/1/details",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notifications",
+                "user",
+                "1",
+                "details"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Pending KYC Verifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/notifications/pending",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notifications",
+                "pending"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Approved KYC Verifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/notifications/approved",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notifications",
+                "approved"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Rejected KYC Verifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/notifications/rejected",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notifications",
+                "rejected"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83d\udd04 Atropos Events",
+      "item": [
+        {
+          "name": "Atropos Webhook Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/atropos/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "atropos",
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Receive Verification Created Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"verification.created\",\n  \"data\": {\n    \"verificationId\": 1,\n    \"customerId\": 2,\n    \"requestedBy\": 3,\n    \"status\": \"PENDING\",\n    \"timestamp\": 1234567890\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/atropos/webhook",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "atropos",
+                "webhook"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Receive Verification Status Updated Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"verification.status.updated\",\n  \"data\": {\n    \"verificationId\": 1,\n    \"oldStatus\": \"PENDING\",\n    \"newStatus\": \"IN_REVIEW\",\n    \"officerId\": 2,\n    \"comments\": \"Starting review\",\n    \"timestamp\": 1234567890\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/atropos/webhook",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "atropos",
+                "webhook"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Receive Document Uploaded Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"document.uploaded\",\n  \"data\": {\n    \"documentId\": 1,\n    \"verificationId\": 1,\n    \"documentType\": \"AADHAAR\",\n    \"fileName\": \"aadhaar.pdf\",\n    \"timestamp\": 1234567890\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/atropos/webhook",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "atropos",
+                "webhook"
+              ]
+            },
+            "description": "Response includes viewUrl and downloadUrl. Click the viewUrl to open the document."
+          }
+        },
+        {
+          "name": "Receive Verification Assigned Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"verification.assigned\",\n  \"data\": {\n    \"verificationId\": 1,\n    \"officerId\": 2,\n    \"status\": \"IN_REVIEW\",\n    \"timestamp\": 1234567890\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/atropos/webhook",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "atropos",
+                "webhook"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Upload Document + Trigger Event (Combined)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select PDF file"
+                },
+                {
+                  "key": "verificationId",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "documentType",
+                  "value": "AADHAAR",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/atropos/upload-and-notify",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "atropos",
+                "upload-and-notify"
+              ]
+            },
+            "description": "Uploads document AND triggers Atropos event in one call. Response includes viewUrl to open the document."
+          }
+        },
+        {
+          "name": "Test Email Notification",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"your-email@gmail.com\",\n  \"status\": \"APPROVED\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/notifications/test-email",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "notifications",
+                "test-email"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "\ud83c\udf10 Public Endpoints",
+      "item": [
+        {
+          "name": "Actuator Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/actuator/health",
+              "host": [
+                "http://localhost:8080"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Document Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/public/document-types",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "public",
+                "document-types"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

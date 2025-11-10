@@ -1,0 +1,390 @@
+{
+  "info": {
+    "name": "KYC Digital Verification - With Cipher Auth",
+    "description": "Digital KYC Verification API with Cipher Token Authorization\n\n**IMPORTANT: TOKEN REQUIRED FOR ALL ENDPOINTS**\n\nAdd your Cipher token in Authorization header:\n- Header: `Authorization`\n- Value: `Bearer <your-cipher-token>`\n\nRoles:\n- kycdm_officer_admin: Full access + audit logs\n- kycdm_user_customer: Customer operations\n- kycdm_user_officer: Officer operations\n- kycdm_user_requestor: Requestor operations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User Management",
+      "item": [
+        {
+          "name": "Register User - TOKEN REQUIRED",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Cipher token with user.create permission"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"customer1\",\n  \"password\": \"password123\",\n  \"email\": \"customer1@kyc.com\",\n  \"name\": \"John Doe\",\n  \"role\": \"CUSTOMER\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/register",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login - NO TOKEN NEEDED",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"customer1\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Verification Requests",
+      "item": [
+        {
+          "name": "Create Verification - TOKEN REQUIRED",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with verification_request.create"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1,\n  \"verificationType\": \"INDIVIDUAL\",\n  \"priority\": \"HIGH\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/verifications",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "verifications"]
+            }
+          }
+        },
+        {
+          "name": "Get Verification - TOKEN REQUIRED",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with verification_request.read"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/verifications/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "verifications", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Status - TOKEN REQUIRED",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with verification_request.update"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"APPROVED\",\n  \"comments\": \"All documents verified\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/verifications/1/status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "verifications", "1", "status"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Document Management",
+      "item": [
+        {
+          "name": "Upload Document - TOKEN REQUIRED",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with document.create (Customer/Admin)"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                },
+                {
+                  "key": "verificationId",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "documentType",
+                  "value": "AADHAAR",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/documents/upload",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "documents", "upload"]
+            }
+          }
+        },
+        {
+          "name": "Get Documents - TOKEN REQUIRED",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with document.read"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/documents/verification/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "documents", "verification", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Document - TOKEN REQUIRED",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with document.delete (Customer/Admin)"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/documents/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "documents", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "Add Comment - TOKEN REQUIRED",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with comment.create (Officer/Admin)"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Documents look good\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/comments/verification/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "comments", "verification", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Comments - TOKEN REQUIRED",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with comment.read"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/comments/verification/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "comments", "verification", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Audit Logs",
+      "item": [
+        {
+          "name": "Get Audit Logs - TOKEN REQUIRED (Admin/Officer)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with audit_logs.read (Admin/Officer only)"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/audit/verification/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "audit", "verification", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Audit Summary - TOKEN REQUIRED (Admin/Officer)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with audit_logs.read (Admin/Officer only)"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/audit/verification/1/summary",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "audit", "verification", "1", "summary"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "Get User Notifications - TOKEN REQUIRED",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Token with notification.read"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/notifications/user/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "notifications", "user", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Operations",
+      "item": [
+        {
+          "name": "Get All Users - TOKEN REQUIRED (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Admin token with user.read"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "users"]
+            }
+          }
+        },
+        {
+          "name": "Update User Role - TOKEN REQUIRED (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{cipher_token}}",
+                "description": "REQUIRED: Admin token with user.update"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"OFFICER\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/users/1/role",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "users", "1", "role"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "cipher_token",
+      "value": "YOUR_CIPHER_TOKEN_HERE",
+      "type": "string",
+      "description": "⚠️ REPLACE WITH YOUR ACTUAL CIPHER TOKEN FROM AUTH SERVICE"
+    }
+  ]
+}

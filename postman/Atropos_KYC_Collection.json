@@ -1,0 +1,100 @@
+{
+  "info": {
+    "name": "Digital KYC - Atropos Integration",
+    "description": "Complete API collection for testing Atropos event publishing and webhook subscription",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health & Status",
+      "item": [
+        {
+          "name": "Atropos Webhook Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/atropos/health",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "atropos", "health"]
+            }
+          }
+        },
+        {
+          "name": "Application Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/actuator/health",
+              "host": ["{{BASE_URL}}"],
+              "path": ["actuator", "health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhook Events",
+      "item": [
+        {
+          "name": "Document Uploaded Event",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"objectType\": \"document.uploaded\",\n  \"objectID\": \"123\",\n  \"operationType\": \"CREATE\",\n  \"tenant\": \"0\",\n  \"data\": {\n    \"documentId\": 123,\n    \"verificationId\": 456,\n    \"documentType\": \"AADHAAR\",\n    \"fileName\": \"aadhaar.pdf\",\n    \"timestamp\": 1234567890\n  }\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/atropos/webhook",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "atropos", "webhook"]
+            }
+          }
+        },
+        {
+          "name": "Verification Status Updated",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"objectType\": \"verification.status.updated\",\n  \"objectID\": \"456\",\n  \"operationType\": \"UPDATE\",\n  \"tenant\": \"0\",\n  \"data\": {\n    \"verificationId\": 456,\n    \"oldStatus\": \"PENDING\",\n    \"newStatus\": \"APPROVED\",\n    \"comments\": \"All documents verified\",\n    \"timestamp\": 1234567890\n  }\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/atropos/webhook",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "atropos", "webhook"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Publisher Service",
+      "item": [
+        {
+          "name": "Publish Event",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant\": \"0\",\n  \"topicScope\": \"SYSTEM\",\n  \"objectType\": \"document.uploaded\",\n  \"objectID\": \"123\",\n  \"operationType\": \"CREATE\",\n  \"data\": {\n    \"documentId\": 123,\n    \"verificationId\": 456,\n    \"documentType\": \"AADHAAR\",\n    \"fileName\": \"aadhaar.pdf\",\n    \"timestamp\": 1234567890\n  }\n}"
+            },
+            "url": {
+              "raw": "{{PUBLISHER_URL}}/publish",
+              "host": ["{{PUBLISHER_URL}}"],
+              "path": ["publish"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {"key": "BASE_URL", "value": "http://localhost:8080"},
+    {"key": "PUBLISHER_URL", "value": "https://publisher-service-appinfra.internal.mum1-pp.zetaapps.in"}
+  ]
+}
